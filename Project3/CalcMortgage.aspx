@@ -16,16 +16,22 @@
             <h2>Calculate Mortgage Monthly Payment</h2>
         </div>
         <p>
-            Please enter the principle amount</p>
+            Please enter the principle amount<asp:TextBox ID="PrincipleAmount" runat="server" OnTextChanged="PrincipleAmount_TextChanged1"></asp:TextBox>
+        </p>
         <p>
             &nbsp;</p>
         <p>
-            Please enter the loan duration in years<asp:RadioButtonList ID="RadioButtonList1" runat="server">
+            Please enter the loan duration in years<asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" runat="server">
                 <asp:ListItem>15 Years</asp:ListItem>
                 <asp:ListItem>30 Years</asp:ListItem>
                 <asp:ListItem>Other</asp:ListItem>
             </asp:RadioButtonList>
             <asp:TextBox ID="OtherInterest" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            Please Select the interest rate</p>
+        <p>
+            <asp:Button ID="ComputeMortgage" runat="server" Text="Monthly Payment" />
         </p>
     </form>
 </body>

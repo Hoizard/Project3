@@ -11,11 +11,28 @@ namespace Project3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                OtherInterest.Enabled = false;
+            }
         }
-        protected void PrincipleAmount_TextChanged(object sender, EventArgs e)
+
+        protected void PrincipleAmount_TextChanged1(object sender, EventArgs e)
         {
 
+        }
+
+        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RadioButtonList1.SelectedValue == "Other")
+            {
+                OtherInterest.Enabled = true;
+            }
+            else
+            {
+                OtherInterest.Enabled = false;
+                OtherInterest.Text = string.Empty;
+            }
         }
     }
 }
