@@ -13,5 +13,9 @@ namespace Project3
         {
 
         }
+        protected void PrincipleAmount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
