@@ -34,5 +34,15 @@ namespace Project3
                 OtherInterest.Text = string.Empty;
             }
         }
+
+        protected void ComputeMortgage_Click(object sender, EventArgs e)
+        {
+            TextBox textBox = PrincipleAmount as TextBox;
+            float PrincAmount = float.Parse(textBox.Text);
+
+            float result =  PrincAmount;
+
+            ResultPayment.Text = $"{PrincAmount} Monthly Payments";
+        }
     }
 }

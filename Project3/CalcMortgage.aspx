@@ -31,8 +31,9 @@
         <p>
             Please Select the interest rate</p>
         <p>
-            <asp:Button ID="ComputeMortgage" runat="server" Text="Monthly Payment" />
+            <asp:Button ID="ComputeMortgage" runat="server" OnClick="ComputeMortgage_Click" Text="Monthly Payment" />
         </p>
+        <asp:Label ID="ResultPayment" runat="server"></asp:Label>
     </form>
 </body>
 </html>
