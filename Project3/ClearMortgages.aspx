@@ -14,6 +14,7 @@
         <div>
             <uc1:SiteNavigation runat="server" ID="SiteNavigation" />
         </div>
+        <asp:Button ID="ClearButton" runat="server" OnClick="ClearButton_Click" Text="Clear Data" />
     </form>
 </body>
 </html>

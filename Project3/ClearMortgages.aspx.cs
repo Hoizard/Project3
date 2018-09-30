@@ -13,5 +13,11 @@ namespace Project3
         {
 
         }
+
+        protected void ClearButton_Click(object sender, EventArgs e)
+        {
+            IIOHelper iOHelper = new FileIOHelper();
+            iOHelper.ClearAllMortgages();
+        }
     }
 }
