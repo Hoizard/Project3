@@ -46,16 +46,15 @@ namespace Project3
 
         protected void ComputeMortgage_Click(object sender, EventArgs e)
         {
-            TextBox textBox = PrincipleAmount as TextBox;
-            TextBox textBox2 = OtherInterest as TextBox;
+            string inPrin = PrincipleAmount.Text;
+            string inInt = OtherInterest.Text;
             string intRate = DropDownList1.SelectedItem.Text;
-
-            double PrincAmount;
+            
             double principal = 0;
             double years = 0;
             double rate = 0;
 
-            if (double.TryParse(textBox.Text, out PrincAmount))
+            if (double.TryParse(inPrin, out principal))
             {
                 double monthly = ComputeMonthlyPayment(principal, years, rate);
                 ResultPayment.Text = string.Format("The monthly payment is {0:C}", monthly); 
@@ -65,8 +64,8 @@ namespace Project3
                 ResultPayment.Text = $"Please input a Principle Amount";
             }
 
-            textBox.Text = String.Empty;
-            textBox.Focus();
+            //textBox.Text = String.Empty;
+            //textBox.Focus();
         }
     }
 }
