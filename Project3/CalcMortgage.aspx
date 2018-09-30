@@ -22,8 +22,8 @@
             &nbsp;</p>
         <p>
             Please enter the loan duration in years<asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" runat="server">
-                <asp:ListItem>15 Years</asp:ListItem>
-                <asp:ListItem>30 Years</asp:ListItem>
+                <asp:ListItem Value="15">15 Years</asp:ListItem>
+                <asp:ListItem Value="30">30 Years</asp:ListItem>
                 <asp:ListItem>Other</asp:ListItem>
             </asp:RadioButtonList>
             <asp:TextBox ID="OtherInterest" runat="server"></asp:TextBox>
