@@ -68,20 +68,22 @@ namespace Project3
                 check = true;
             }
 
-            if (RadioButtonList1.SelectedValue.ToLower() == "other".ToLower())
+            if (RadioButtonList1.SelectedIndex == 2)
+            {
                 if (double.TryParse(inYears, out years) == false)
                 {
                     ResultPayment.Text = $"Please select an Loan Duration";
                     check = true;
                 }
-            else if (RadioButtonList1.SelectedItem.Text == "15")
-                {
-                    years = 15;
-                }
-            else
-                {
-                    years = 30;
-                }
+            }
+            if (RadioButtonList1.SelectedIndex == 0)
+            {
+                years = 15;
+            }
+            if (RadioButtonList1.SelectedIndex == 1)
+            {
+                years = 30;
+            }
 
             if (double.TryParse(inRate, out rate) == false)
             {
