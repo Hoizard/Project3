@@ -90,11 +90,12 @@ namespace Project3
             if (check == false)
             {
                 double monthly = ComputeMonthlyPayment(principal, years, rate);
-                ResultPayment.Text = string.Format("The monthly payment is {0:C}", monthly);
-
+                string formattedOutput = string.Format("The monthly payment is {0:C}", monthly);
+                ResultPayment.Text = formattedOutput;
+                
                 //IIOHelper fileIOHelper = new DatabaseIOHelper();
                 FileIOHelper fileIOHelper = new FileIOHelper();
-                fileIOHelper.AddMortgages(ResultPayment.Text);
+                fileIOHelper.AddMortgages(formattedOutput);
             }
         }
     }

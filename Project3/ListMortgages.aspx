@@ -13,6 +13,7 @@
     <form id="form1" runat="server">
         <div>
             <uc1:SiteNavigation runat="server" ID="SiteNavigation" />
+            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
         </div>
     </form>
 </body>

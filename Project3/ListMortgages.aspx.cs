@@ -11,10 +11,12 @@ namespace Project3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string fileLocation = Server.MapPath("~/app_data/log.txt");
-            if (System.IO.File.Exists(fileLocation) == true)
-            {
-            }
+            IIOHelper iOHelper = new FileIOHelper();
+            var list = iOHelper.ListAllMortgages();
+
+            GridView1.DataSource = list;
+            GridView1.DataBind();
+
         }
     }
 }
