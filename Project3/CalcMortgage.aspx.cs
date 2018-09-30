@@ -13,7 +13,7 @@ namespace Project3
         {
             if (!IsPostBack)
             {
-                OtherInterest.Enabled = false;
+                OtherYears.Enabled = false;
             }
         }
 
@@ -26,12 +26,12 @@ namespace Project3
         {
             if (RadioButtonList1.SelectedValue.ToLower() == "Other".ToLower())
             {
-                OtherInterest.Enabled = true;
+                OtherYears.Enabled = true;
             }
             else
             {
-                OtherInterest.Enabled = false;
-                OtherInterest.Text = string.Empty;
+                OtherYears.Enabled = false;
+                OtherYears.Text = string.Empty;
             }
         }
 
@@ -53,8 +53,8 @@ namespace Project3
         protected void ComputeMortgage_Click(object sender, EventArgs e)
         {
             string inPrin = PrincipleAmount.Text;
-            string inInt = OtherInterest.Text;
-            string intRate = DropDownList1.SelectedItem.Text;
+            string inYears = OtherYears.Text;
+            string inRate = DropDownList1.SelectedItem.Text;
             
             double principal = 0;
             double years = 0;
@@ -67,7 +67,17 @@ namespace Project3
                 ResultPayment.Text = $"Please input a Principle Amount";
                 check = true;
             }
-            else
+            if (double.TryParse(inYears, out years) == false)
+            {
+                ResultPayment.Text = $"Please select an Loan Duration";
+                check = true;
+            }
+            if (double.TryParse(inRate, out rate) == false)
+            {
+                ResultPayment.Text = $"Please select an Interest Rate";
+                check = true;
+            }
+            if (check == false)
             {
                 double monthly = ComputeMonthlyPayment(principal, years, rate);
                 ResultPayment.Text = string.Format("The monthly payment is {0:C}", monthly);

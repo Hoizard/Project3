@@ -26,7 +26,7 @@
                 <asp:ListItem Value="30">30 Years</asp:ListItem>
                 <asp:ListItem>Other</asp:ListItem>
             </asp:RadioButtonList>
-            <asp:TextBox ID="OtherInterest" runat="server"></asp:TextBox>
+            <asp:TextBox ID="OtherYears" runat="server"></asp:TextBox>
         </p>
         <p>
             Please Select the interest rate<asp:DropDownList ID="DropDownList1" runat="server">
