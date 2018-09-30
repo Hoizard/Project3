@@ -35,12 +35,27 @@ namespace Project3
             }
         }
 
+        private float ComputePayment(float pAmount, float yAmount, float rAmount)
+        {
+            float x = 1200;
+            float y = -12;
+            float z = 1;
+            float Calc1 = pAmount * rAmount / x;
+            float Calc2 = z - Math.Pow(z + (rAmount / x), y * yAmount);
+            float monthly = Calc1 / Calc2;
+            return monthly;
+        }
+
         protected void ComputeMortgage_Click(object sender, EventArgs e)
         {
-            TextBox textBox = PrincipleAmount as TextBox;
-            TextBox textBox2 = OtherInterest as TextBox;
-            float otherInterest = float.Parse(textBox2.Text);
-            float PrincAmount = float.Parse(textBox.Text);
+            //TextBox textBox = PrincipleAmount as TextBox;
+            //TextBox textBox2 = OtherInterest as TextBox;
+            //float otherInterest = float.Parse(textBox2.Text);
+            //float PrincAmount = float.Parse(textBox.Text);
+
+            float pAmount = 0;
+            float yAmount = 0;
+            float rAmount = 0;
 
             if (PrincipleAmount.Text == "")
             {
@@ -53,6 +68,13 @@ namespace Project3
             else if (DropDownList1.SelectedItem == null)
             {
                 ResultPayment.Text = $"Please Select an Interest Rate";
+            }
+            else
+            {
+                float finalResult = ComputePayment(pAmount, yAmount, rAmount);
+                ResultPayment.Text = $"Principal of {0} with an interest rate of {1} for {2} years as monthly payment of {3:C}";
+
+
             }
             //else if  (RadioButtonList1.SelectedValue.ToLower() == "Other".ToLower())
             //{
