@@ -50,19 +50,15 @@ namespace Project3
             TextBox textBox2 = OtherInterest as TextBox;
             string intRate = DropDownList1.SelectedItem.Text;
 
-            double otherInterest;
             double PrincAmount;
-            
             double principal = 0;
             double years = 0;
             double rate = 0;
-            double monthly = 0;
 
             if (double.TryParse(textBox.Text, out PrincAmount))
             {
-                double finalResult = ComputeMonthlyPayment(principal, years, rate);
-                ResultPayment.Text = string.Format("Principal of {0} with an interest rate of {1} for {2} years as monthly payment of {3:C}", principal, rate, years, monthly);
-
+                double monthly = ComputeMonthlyPayment(principal, years, rate);
+                ResultPayment.Text = string.Format("The monthly payment is {0:C}", monthly); 
             }
             else
             {
