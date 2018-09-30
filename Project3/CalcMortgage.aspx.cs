@@ -42,27 +42,34 @@ namespace Project3
             float otherInterest = float.Parse(textBox2.Text);
             float PrincAmount = float.Parse(textBox.Text);
 
-            if (RadioButtonList1.SelectedItem == null)
+            if (PrincipleAmount.Text == "")
             {
-                ResultPayment.Text = $"Please select an Interest Rate!!";
+                ResultPayment.Text = $"Please input a Principle Amount";
             }
-            
-            else if  (RadioButtonList1.SelectedValue.ToLower() == "Other".ToLower())
+            else if (RadioButtonList1.SelectedItem == null)
             {
-                string selectedValue = RadioButtonList1.SelectedValue;
-                float result = PrincAmount * otherInterest;
-                ResultPayment.Text = $"{result} Monthly Payments";
+                ResultPayment.Text = $"Please select an Loan Duration!!";
             }
-            else if (RadioButtonList1.SelectedItem.Value == "15")
+            else if (DropDownList1.SelectedItem == null)
             {
-                float result = PrincAmount * 15;
-                ResultPayment.Text = $"{result} Monthly Payments";
+                ResultPayment.Text = $"Please Select an Interest Rate";
             }
-            else if (RadioButtonList1.SelectedItem.Value == "30")
-            {
-                float result = PrincAmount * 30;
-                ResultPayment.Text = $"{result} Monthly Payments";
-            }
+            //else if  (RadioButtonList1.SelectedValue.ToLower() == "Other".ToLower())
+            //{
+            //    string selectedValue = RadioButtonList1.SelectedValue;
+            //    float result = PrincAmount * otherInterest;
+            //    ResultPayment.Text = $"{result} Monthly Payments";
+            //}
+            //else if (RadioButtonList1.SelectedItem.Value == "15")
+            //{
+            //    float result = PrincAmount * 15;
+            //    ResultPayment.Text = $"{result} Monthly Payments";
+            //}
+            //else if (RadioButtonList1.SelectedItem.Value == "30")
+            //{
+            //    float result = PrincAmount * 30;
+            //    ResultPayment.Text = $"{result} Monthly Payments";
+            //}
             
         }
     }
