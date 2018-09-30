@@ -35,14 +35,14 @@ namespace Project3
             }
         }
 
-        private float ComputePayment(float pAmount, float yAmount, float rAmount)
+        private double ComputePayment(double pAmount, double yAmount, double rAmount)
         {
-            float x = 1200;
-            float y = -12;
-            float z = 1;
-            float Calc1 = pAmount * rAmount / x;
-            float Calc2 = z - Math.Pow(z + (rAmount / x), y * yAmount);
-            float monthly = Calc1 / Calc2;
+            double x = 1200;
+            double y = -12;
+            double z = 1;
+            double Calc1 = pAmount * rAmount / x;
+            double Calc2 = z - Math.Pow(z + (rAmount / x), y * yAmount);
+            double monthly = Calc1 / Calc2;
             return monthly;
         }
 
@@ -53,9 +53,9 @@ namespace Project3
             //float otherInterest = float.Parse(textBox2.Text);
             //float PrincAmount = float.Parse(textBox.Text);
 
-            float pAmount = 0;
-            float yAmount = 0;
-            float rAmount = 0;
+            double pAmount = 0;
+            double yAmount = 0;
+            double rAmount = 0;
 
             if (PrincipleAmount.Text == "")
             {
@@ -71,7 +71,7 @@ namespace Project3
             }
             else
             {
-                float finalResult = ComputePayment(pAmount, yAmount, rAmount);
+                double finalResult = ComputePayment(pAmount, yAmount, rAmount);
                 ResultPayment.Text = $"Principal of {0} with an interest rate of {1} for {2} years as monthly payment of {3:C}";
 
 
