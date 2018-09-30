@@ -67,16 +67,28 @@ namespace Project3
                 ResultPayment.Text = $"Please input a Principle Amount";
                 check = true;
             }
-            if (double.TryParse(inYears, out years) == false)
-            {
-                ResultPayment.Text = $"Please select an Loan Duration";
-                check = true;
-            }
+
+            if (RadioButtonList1.SelectedValue.ToLower() == "other".ToLower())
+                if (double.TryParse(inYears, out years) == false)
+                {
+                    ResultPayment.Text = $"Please select an Loan Duration";
+                    check = true;
+                }
+            else if (RadioButtonList1.SelectedItem.Text == "15")
+                {
+                    years = 15;
+                }
+            else
+                {
+                    years = 30;
+                }
+
             if (double.TryParse(inRate, out rate) == false)
             {
                 ResultPayment.Text = $"Please select an Interest Rate";
                 check = true;
             }
+
             if (check == false)
             {
                 double monthly = ComputeMonthlyPayment(principal, years, rate);

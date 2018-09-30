@@ -29,11 +29,11 @@
             <asp:TextBox ID="OtherYears" runat="server"></asp:TextBox>
         </p>
         <p>
-            Please Select the interest rate<asp:DropDownList ID="DropDownList1" runat="server">
-                <asp:ListItem Value=".25">.25%</asp:ListItem>
-                <asp:ListItem Value=".50">.50%</asp:ListItem>
-                <asp:ListItem Value=".75">.75%</asp:ListItem>
-                <asp:ListItem Value="1">100%</asp:ListItem>
+            Please Select the interest rate<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True">
+                <asp:ListItem Value="1">1</asp:ListItem>
+                <asp:ListItem>2</asp:ListItem>
+                <asp:ListItem>3</asp:ListItem>
+                <asp:ListItem>4</asp:ListItem>
             </asp:DropDownList>
         </p>
         <p>
