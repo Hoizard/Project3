@@ -14,6 +14,11 @@ namespace Project3
             IIOHelper iOHelper = new FileIOHelper();
             var list = iOHelper.ListAllMortgages();
 
+            if (list.Count == 0)
+            {
+                list.Add("No Data stored!");
+            }
+
             GridView1.DataSource = list;
             GridView1.DataBind();
 

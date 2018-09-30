@@ -43,13 +43,17 @@ namespace Project3
 
         public List<string> ListAllMortgages()
         {
+            List<string> allData = new List<string>();
             string fileLocation = HttpContext.Current.Server.MapPath("~/app_data/log.txt");
 
-            string[] allTempStringArray = File.ReadAllLines(fileLocation);
+            if (File.Exists(fileLocation))
+            {
+                string[] allTempStringArray = File.ReadAllLines(fileLocation);
 
-            List<string> allTemps = new List<string>(allTempStringArray);
+                allData = new List<string>(allTempStringArray);
+            }
 
-            return allTemps;
+            return allData;
         }
     }
 }
