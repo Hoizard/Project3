@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,10 +18,7 @@ namespace Project3
             }
         }
 
-        protected void PrincipleAmount_TextChanged1(object sender, EventArgs e)
-        {
-
-        }
+        
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -35,7 +33,7 @@ namespace Project3
             }
         }
 
-        private double ComputeMonthlyPayment(double principal, double years, double rate)
+        protected double ComputeMonthlyPayment(double principal, double years, double rate)
         {
             double monthly = 0;
             double top = principal * rate / 1200.00;
@@ -94,12 +92,9 @@ namespace Project3
                 double monthly = ComputeMonthlyPayment(principal, years, rate);
                 ResultPayment.Text = string.Format("The monthly payment is {0:C}", monthly);
 
-                string fileLocation = Server.MapPath("~/app_data/log.txt");
-
-                using (var fileStream = System.IO.File.AppendText(fileLocation))
-                {
-                    fileStream.WriteLine(ResultPayment.Text);
-                }
+                //IIOHelper fileIOHelper = new DatabaseIOHelper();
+                FileIOHelper fileIOHelper = new FileIOHelper();
+                fileIOHelper.AddMortgages(ResultPayment.Text);
             }
         }
     }

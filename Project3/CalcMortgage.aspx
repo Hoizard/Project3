@@ -16,7 +16,7 @@
             <h2>Calculate Mortgage Monthly Payment</h2>
         </div>
         <p>
-            Please enter the principle amount<asp:TextBox ID="PrincipleAmount" runat="server" OnTextChanged="PrincipleAmount_TextChanged1"></asp:TextBox>
+            Please enter the principle amount<asp:TextBox ID="PrincipleAmount" runat="server"></asp:TextBox>
         </p>
         <p>
             &nbsp;</p>
