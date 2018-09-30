@@ -37,6 +37,11 @@ namespace Project3
 
         protected void ComputeMortgage_Click(object sender, EventArgs e)
         {
+            TextBox textBox = PrincipleAmount as TextBox;
+            TextBox textBox2 = OtherInterest as TextBox;
+            float otherInterest = float.Parse(textBox2.Text);
+            float PrincAmount = float.Parse(textBox.Text);
+
             if (RadioButtonList1.SelectedItem == null)
             {
                 ResultPayment.Text = $"Please select an Interest Rate!!";
@@ -45,32 +50,17 @@ namespace Project3
             else if  (RadioButtonList1.SelectedValue.ToLower() == "Other".ToLower())
             {
                 string selectedValue = RadioButtonList1.SelectedValue;
-
-                TextBox textBox2 = OtherInterest as TextBox;
-                TextBox textBox = PrincipleAmount as TextBox;
-                float otherInterest = float.Parse(textBox2.Text);
-                float PrincAmount = float.Parse(textBox.Text);
-
                 float result = PrincAmount * otherInterest;
-
                 ResultPayment.Text = $"{result} Monthly Payments";
             }
             else if (RadioButtonList1.SelectedItem.Value == "15")
             {
-                TextBox textBox = PrincipleAmount as TextBox;
-                float PrincAmount = float.Parse(textBox.Text);
-
                 float result = PrincAmount * 15;
-
                 ResultPayment.Text = $"{result} Monthly Payments";
             }
             else if (RadioButtonList1.SelectedItem.Value == "30")
             {
-                TextBox textBox = PrincipleAmount as TextBox;
-                float PrincAmount = float.Parse(textBox.Text);
-
                 float result = PrincAmount * 30;
-
                 ResultPayment.Text = $"{result} Monthly Payments";
             }
             

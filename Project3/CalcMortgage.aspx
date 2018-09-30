@@ -29,7 +29,13 @@
             <asp:TextBox ID="OtherInterest" runat="server"></asp:TextBox>
         </p>
         <p>
-            Please Select the interest rate</p>
+            Please Select the interest rate<asp:DropDownList ID="DropDownList1" runat="server">
+                <asp:ListItem Value=".25">.25%</asp:ListItem>
+                <asp:ListItem Value=".50">.50%</asp:ListItem>
+                <asp:ListItem Value=".75">.75%</asp:ListItem>
+                <asp:ListItem Value="1">100%</asp:ListItem>
+            </asp:DropDownList>
+        </p>
         <p>
             <asp:Button ID="ComputeMortgage" runat="server" OnClick="ComputeMortgage_Click" Text="Monthly Payment" />
         </p>
