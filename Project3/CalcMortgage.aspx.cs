@@ -44,6 +44,12 @@ namespace Project3
             return monthly;
         }
 
+        //private static Tuple<bool,float> ValidateInput (string)
+        //{
+        //    Tuple<bool, float> resultTuple;
+
+        //}
+
         protected void ComputeMortgage_Click(object sender, EventArgs e)
         {
             string inPrin = PrincipleAmount.Text;
@@ -54,14 +60,18 @@ namespace Project3
             double years = 0;
             double rate = 0;
 
-            if (double.TryParse(inPrin, out principal))
+            bool check = false;
+
+            if (double.TryParse(inPrin, out principal) == false)
             {
-                double monthly = ComputeMonthlyPayment(principal, years, rate);
-                ResultPayment.Text = string.Format("The monthly payment is {0:C}", monthly); 
+                ResultPayment.Text = $"Please input a Principle Amount";
+                check = true;
             }
             else
             {
-                ResultPayment.Text = $"Please input a Principle Amount";
+                double monthly = ComputeMonthlyPayment(principal, years, rate);
+                ResultPayment.Text = string.Format("The monthly payment is {0:C}", monthly);
+
             }
 
             //textBox.Text = String.Empty;
