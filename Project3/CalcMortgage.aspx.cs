@@ -56,16 +56,12 @@ namespace Project3
             double principal = 0;
             double years = 0;
             double rate = 0;
-
-            if (RadioButtonList1.SelectedItem == null)
-            {
-                ResultPayment.Text = $"Please select an Loan Duration!!";
-            }
+            double monthly = 0;
 
             if (double.TryParse(textBox.Text, out PrincAmount))
             {
                 double finalResult = ComputeMonthlyPayment(principal, years, rate);
-                ResultPayment.Text = $"Principal of {principal} with an interest rate of {rate} for {years} years as monthly payment of {finalResult}";
+                ResultPayment.Text = string.Format("Principal of {0} with an interest rate of {1} for {2} years as monthly payment of {3:C}", principal, rate, years, monthly);
 
             }
             else
