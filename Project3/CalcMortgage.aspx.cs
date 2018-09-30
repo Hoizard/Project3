@@ -35,14 +35,15 @@ namespace Project3
             }
         }
 
-        private double ComputePayment(double pAmount, double yAmount, double rAmount)
+        private double ComputeMonthlyPayment(double principal, double years, double rate)
         {
-            double x = 1200;
-            double y = -12;
-            double z = 1;
-            double Calc1 = pAmount * rAmount / x;
-            double Calc2 = z - Math.Pow(z + (rAmount / x), y * yAmount);
-            double monthly = Calc1 / Calc2;
+            double monthly = 0;
+            double top = principal * rate / 1200.00;
+            double bottom = 1 - Math.Pow(1.0 + rate / 1200.0, -12.0 * years);
+            // http://www.bankrate.com/calculators/mortgages/loan-calculator.aspx
+            monthly = top / bottom;
+            //Console.WriteLine();
+            //Console.WriteLine("With a principl of ${0}, duration of {1} years and a interest rate of {2}% the monthly loan payment amount is {3:$0.00}", principal, years, rate, monthly);
             return monthly;
         }
 
@@ -50,37 +51,42 @@ namespace Project3
         {
             TextBox textBox = PrincipleAmount as TextBox;
             TextBox textBox2 = OtherInterest as TextBox;
-            double otherInterest = double.Parse(textBox2.Text);
-            double PrincAmount = double.Parse(textBox.Text);
+            string intRate = DropDownList1.SelectedItem.Text;
+
+            double otherInterest;
+            double PrincAmount;
             
-            if (double.TryParse(textBox.Text, out PrincAmount))
-            {
+            double principal = 0;
+            double years = 0;
+            double rate = 0;
 
-            }
-
-            double pAmount = 0;
-            double yAmount = 0;
-            double rAmount = 0;
-
-            if (PrincipleAmount.Text == "")
-            {
-                ResultPayment.Text = $"Please input a Principle Amount";
-            }
-            else if (RadioButtonList1.SelectedItem == null)
+            
+            //if (PrincipleAmount.Text == "")
+            //{
+            //    ResultPayment.Text = $"Please input a Principle Amount";
+            //}
+            if (RadioButtonList1.SelectedItem == null)
             {
                 ResultPayment.Text = $"Please select an Loan Duration!!";
             }
-            else if (DropDownList1.SelectedItem == null)
+            //else if (DropDownList1.SelectedItem == null)
+            //{
+            //    ResultPayment.Text = $"Please Select an Interest Rate";
+            //}
+            if (double.TryParse(textBox.Text, out PrincAmount))
             {
-                ResultPayment.Text = $"Please Select an Interest Rate";
+                double finalResult = ComputeMonthlyPayment(principal, years, rate);
+                ResultPayment.Text = $"Principal of {principal} with an interest rate of {rate} for {years} years as monthly payment of {finalResult}";
+
             }
             else
             {
-                double finalResult = ComputePayment(pAmount, yAmount, rAmount);
-                ResultPayment.Text = $"Principal of {pAmount} with an interest rate of {rAmount} for {yAmount} years as monthly payment of {finalResult}";
-
-
+                ResultPayment.Text = $"Please input a Principle Amount";
             }
+
+            textBox.Text = String.Empty;
+            textBox.Focus();
+
             //else if  (RadioButtonList1.SelectedValue.ToLower() == "Other".ToLower())
             //{
             //    string selectedValue = RadioButtonList1.SelectedValue;
@@ -97,7 +103,7 @@ namespace Project3
             //    float result = PrincAmount * 30;
             //    ResultPayment.Text = $"{result} Monthly Payments";
             //}
-            
+
         }
     }
 }
