@@ -48,10 +48,15 @@ namespace Project3
 
         protected void ComputeMortgage_Click(object sender, EventArgs e)
         {
-            //TextBox textBox = PrincipleAmount as TextBox;
-            //TextBox textBox2 = OtherInterest as TextBox;
-            //float otherInterest = float.Parse(textBox2.Text);
-            //float PrincAmount = float.Parse(textBox.Text);
+            TextBox textBox = PrincipleAmount as TextBox;
+            TextBox textBox2 = OtherInterest as TextBox;
+            double otherInterest = double.Parse(textBox2.Text);
+            double PrincAmount = double.Parse(textBox.Text);
+            
+            if (double.TryParse(textBox.Text, out PrincAmount))
+            {
+
+            }
 
             double pAmount = 0;
             double yAmount = 0;
@@ -72,7 +77,7 @@ namespace Project3
             else
             {
                 double finalResult = ComputePayment(pAmount, yAmount, rAmount);
-                ResultPayment.Text = $"Principal of {0} with an interest rate of {1} for {2} years as monthly payment of {3:C}";
+                ResultPayment.Text = $"Principal of {pAmount} with an interest rate of {rAmount} for {yAmount} years as monthly payment of {finalResult}";
 
 
             }
