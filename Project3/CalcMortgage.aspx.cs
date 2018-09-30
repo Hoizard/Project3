@@ -55,14 +55,12 @@ namespace Project3
             string inPrin = PrincipleAmount.Text;
             string inYears = OtherYears.Text;
             string inRate = DropDownList1.SelectedItem.Text;
-            
-            double principal = 0;
+
             double years = 0;
-            double rate = 0;
 
             bool check = false;
 
-            if (double.TryParse(inPrin, out principal) == false)
+            if (double.TryParse(inPrin, out double principal) == false)
             {
                 ResultPayment.Text = $"Please input a Principle Amount";
                 check = true;
@@ -85,7 +83,7 @@ namespace Project3
                 years = 30;
             }
 
-            if (double.TryParse(inRate, out rate) == false)
+            if (double.TryParse(inRate, out double rate) == false)
             {
                 ResultPayment.Text = $"Please select an Interest Rate";
                 check = true;
@@ -96,10 +94,13 @@ namespace Project3
                 double monthly = ComputeMonthlyPayment(principal, years, rate);
                 ResultPayment.Text = string.Format("The monthly payment is {0:C}", monthly);
 
-            }
+                string fileLocation = Server.MapPath("~/app_data/log.txt");
 
-            //textBox.Text = String.Empty;
-            //textBox.Focus();
+                using (var fileStream = System.IO.File.AppendText(fileLocation))
+                {
+                    fileStream.WriteLine(ResultPayment.Text);
+                }
+            }
         }
     }
 }
